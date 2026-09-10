@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
-
+import Money from "../assets/money.webp"
+import Group from "../assets/Group_.png"
 export default function AboutSection() {
   return (
     <section style={styles.section}>
@@ -26,13 +27,13 @@ export default function AboutSection() {
           <div style={styles.shape} />
 
           <img
-            src="https://images.unsplash.com/photo-1653508310884-d50ad8b1cb3d?fm=jpg&q=70&w=700&auto=format&fit=crop"
-            alt="Healthcare workers wearing masks"
+            src={Money}
+            alt="Money"
             style={styles.imageBack}
           />
 
           <img
-            src="https://images.unsplash.com/photo-1593113646773-028c64a8f1b8?fm=jpg&q=70&w=600&auto=format&fit=crop"
+            src={Group}
             alt="Volunteers with food donation boxes"
             style={styles.imageFront}
           />
