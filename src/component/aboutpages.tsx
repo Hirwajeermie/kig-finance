@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
-import Image from "../assets/images.jpg"
-import Economic from "../assets/economic.jpg"
+import Image from "../assets/images.jpg";
+import Economic from "../assets/Economic.jpg";
 
 export default function AboutSection() {
   return (
