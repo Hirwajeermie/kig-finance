@@ -1,4 +1,3 @@
-import React from "react";
 import logoo from "../assets/logoo.png"; 
 
 interface Post {

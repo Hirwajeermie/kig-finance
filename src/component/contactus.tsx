@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-const causes = ["Food", "Education", "Medical", "Shelter"];
-
 const actions = [
   { label: "Access", icon: "hand" },
   { label: "Growth", icon: "globe" },
@@ -221,7 +219,8 @@ const styles = `
 }
 
 .lc-field input,
-.lc-field select {
+.lc-field select,
+.lc-field textarea {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 4px;
@@ -229,9 +228,11 @@ const styles = `
   color: #fff;
   font-size: 14px;
   font-family: inherit;
+  resize: vertical;
 }
 
-.lc-field input::placeholder {
+.lc-field input::placeholder,
+.lc-field textarea::placeholder {
   color: rgba(255, 255, 255, 0.55);
 }
 
@@ -293,25 +294,26 @@ const styles = `
 `;
 
 export default function CharityLanding() {
-  const [result, setResult] = React.useState("");
+  const [result, setResult] = useState("");
 
-  const onSubmit = async (event) => {
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const form = event.currentTarget;
     setResult("Sending....");
-    const formData = new FormData(event.target);
+    const formData = new FormData(form);
 
     formData.append("access_key", "3ad05130-052d-4d81-8883-0ab770c193f7");
 
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
-      body: formData
+      body: formData,
     });
 
     const data = await response.json();
 
     if (data.success) {
       setResult("Form Submitted Successfully");
-      event.target.reset();
+      form.reset();
     } else {
       console.log("Error", data);
       setResult(data.message);
@@ -391,7 +393,7 @@ export default function CharityLanding() {
 
                 <label className="lc-field">
                   {/* <span>Write Your Message Here</span> */}
-                  <textarea className="lc-field" name="Message"  rows="6" placeholder='Enter your message' required></textarea>
+                  <textarea className="lc-textarea" name="Message" rows={6} placeholder='Enter your message' required></textarea>
                 </label>
 
                 <button type="submit" className="lc-submit">
