@@ -1,8 +1,10 @@
 import type { CSSProperties } from "react";
+import { useNavigate } from "react-router-dom";
 import Image from "../assets/images.jpg";
 import Economic from "../assets/Economic.jpg";
 
 export default function AboutSection() {
+  const navigate = useNavigate();
   return (
     <section style={styles.section}>
       <div style={styles.container}>
@@ -37,7 +39,7 @@ export default function AboutSection() {
             To drive economic empowerment for the masses and middle-income earners in rwanda through providing innovative, fast and responsible credit solutions, by removing the requirement for prior saving, thus accelerating access to productive capital, enabling clients to seize the opportunities, grow their income and achieve financial independence.
           </p>
 
-          <button type="button" style={styles.button}>
+          <button type="button" style={styles.button} onClick={() => navigate("/morexplain")}>
             Discover More
           </button>
         </div>

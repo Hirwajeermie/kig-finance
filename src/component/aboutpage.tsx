@@ -1,7 +1,10 @@
 import type { CSSProperties } from "react";
-import Money from "../assets/money.webp"
-import Group from "../assets/Group_.png"
+import { useNavigate } from "react-router-dom";
+import Money from "../assets/money.webp";
+import Group from "../assets/Group_.png";
+
 export default function AboutSection() {
+  const navigate = useNavigate();
   return (
     <section style={styles.section}>
       <div style={styles.container}>
@@ -18,7 +21,7 @@ export default function AboutSection() {
             To be the leading Rwandan retail financial services provider, transorming the investments of the masses and middle-income earners through innovative and inclusive financial solutions.
           </p>
 
-          <button type="button" style={styles.button}>
+          <button type="button" style={styles.button} onClick={() => navigate("/morexplain")}>
             Discover More
           </button>
         </div>

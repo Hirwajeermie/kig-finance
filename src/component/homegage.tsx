@@ -1,7 +1,51 @@
 import React from "react";
-import { Phone, MapPin, Home, Users, Bell, Briefcase, ChevronDown } from "lucide-react";
-
+import { useNavigate } from "react-router-dom";
+import { Phone, MapPin, Home, Users, Bell, Briefcase } from "lucide-react";
 import logo from "../assets/logoo.png";
+
+const carouselCards = [
+  {
+    tag: "Business",
+    title: "1.	Business Loan",
+    slogan: "Mandatory Documentation:",
+    accent: "#00c22d",
+    background: "linear-gradient(135deg, #ebfff0 0%, #dff9e7 40%, #ffffff 100%)",
+    text: "#1e2a23",
+    services: ["o	Loan application form", 
+      "o	Valid National ID/Passport (Copy) of Business owners", 
+      "o	RDB full Registration Certificate", 
+      "o	Bank or MoMo Statement (Last 6 Months)", 
+      "o	Marital Status Certificate", 
+      "o	Loan security (Collateral)"],
+  },
+  {
+    tag: "People",
+    title: "2.	Salary Loan (For employees)",
+    slogan: "Mandatory Documentation:",
+    accent: "#2b3142",
+    background: "linear-gradient(135deg, #eef3ff 0%, #dfe7ff 35%, #ffffff 100%)",
+    text: "#1d2233",
+    services: ["oLoan application form", 
+      "o Valid National ID/Passport (Copy) of Business owners", 
+      "o Professional Work Contract (minimum of 6months)", 
+      "o Bank Statement (Last 3 Months)",
+      "o Three (3) recent pay-slips stamped",
+      "o Marital Status Certificate",
+      "o Loan security (Collateral)"],
+  },
+  {
+    tag: "Trust",
+    title: "Other requirements (KIGF): ",
+    slogan: "Mandatory Documentation:",
+    accent: "#e67e22",
+    background: "linear-gradient(135deg, #fff7ec 0%, #ffe8d2 35%, #ffffff 100%)",
+    text: "#2c1d12",
+    services: ["o	CRB (TransUnion) report", 
+      "o	Notarized individual/Spouse Guarantee  ", 
+      "o	Notarized abstract of movable collateral agreement (AoMCA)",
+      "o	For Company  : Notarized Board resolution  of shareholders",],
+  },
+];
 
 export default function KigFinanceHome() {
   return (
@@ -69,20 +113,16 @@ export default function KigFinanceHome() {
             <li style={styles.navItemActive}>Home</li>
             <li style={styles.navItem}>About Us</li>
             <li style={styles.navItem}>
-              Services <ChevronDown size={12} />
-            </li>
-            <li style={styles.navItem}>FAQ's</li>
-            <li style={styles.navItem}>Blog</li>
-            <li style={styles.navItem}>
-              Shop <ChevronDown size={12} />
+              Services 
             </li>
             <li style={styles.navItem}>Contact Us</li>
+            <li style={styles.navItem}>Our Team</li>
           </ul>
-           <div style={styles.socials} aria-label="Social media links">
+         {/*   <div style={styles.socials} aria-label="Social media links">
             <span>Facebook</span>
             <span>LinkedIn</span>
             <span>Twitter</span>
-          </div>
+          </div> */}
         </nav>
       </header>
 
@@ -103,6 +143,48 @@ export default function KigFinanceHome() {
       </section>
       </div>
 
+      <section className="xc-carousel-section" style={styles.carouselSection}>
+        <div style={styles.carouselIntro}>
+          <span style={styles.carouselEyebrow}>Built for everyday growth</span>
+          <h2 style={styles.carouselTitle}>Minimum documentation required</h2>
+        </div>
+
+        <div className="xc-carousel-track" style={styles.carouselTrack}>
+          {carouselCards.map((card) => (
+            <article
+              key={card.title}
+              className="xc-carousel-card"
+              style={{
+                ...styles.carouselCard,
+                background: card.background,
+                color: card.text,
+              }}
+            >
+              <span
+                style={{
+                  ...styles.carouselTag,
+                  background: card.accent,
+                  color: card.tag === "People" ? "#fff" : "#0d1a13",
+                }}
+              >
+                {card.tag}
+              </span>
+
+              <h3 style={styles.carouselCardTitle}>{card.title}</h3>
+              <p style={styles.carouselSlogan}>{card.slogan}</p>
+
+              <ul style={styles.carouselList}>
+                {card.services.map((service) => (
+                  <li key={service} style={styles.carouselItem}>
+                    {service}
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </section>
+
       {/* Feature cards */}
       <section className="xc-features" style={styles.features}>
         <FeatureCard icon={<Home size={26} />} title="Instant Capital Access" text="Savings Barrier Elimination: Position the institution as the fastest alternative to traditional banks by eliminating the mandatory deposit or compulsory savings phase before loan approval." />
@@ -115,12 +197,20 @@ export default function KigFinanceHome() {
 }
 
 function FeatureCard({ icon, title, text }: { icon: React.ReactNode; title: string; text: string }) {
+  const navigate = useNavigate();
+
   return (
     <div className="xc-card" style={styles.card}>
       <div style={styles.cardIconCircle}>{icon}</div>
       <div style={styles.cardTitle}>{title}</div>
       <div style={styles.cardText}>{text}</div>
-      <div style={styles.cardLink}>Learn more</div>
+      <button
+        type="button"
+        style={styles.cardLinkButton}
+        onClick={() => navigate("/readmore")}
+      >
+        Learn more
+      </button>
     </div>
   );
 }
@@ -264,9 +354,85 @@ const styles: { [k: string]: React.CSSProperties } = {
     marginLeft: "auto",
     marginRight: "auto",
   },
+  carouselSection: {
+    maxWidth: 1200,
+    margin: "0 auto 40px",
+    padding: "20px 20px 0",
+  },
+  carouselIntro: {
+    textAlign: "center",
+    marginBottom: 24,
+  },
+  carouselEyebrow: {
+    display: "inline-block",
+    color: ORANGE,
+    fontSize: 12,
+    fontWeight: 700,
+    letterSpacing: 2,
+    textTransform: "uppercase",
+    marginBottom: 10,
+  },
+  carouselTitle: {
+    margin: 0,
+    color: DARK,
+    fontSize: 32,
+    lineHeight: 1.2,
+    fontWeight: 700,
+  },
+  carouselTrack: {
+    display: "grid",
+    gridTemplateColumns: "repeat(3, minmax(220px, 1fr))",
+    gap: 20,
+    overflowX: "auto",
+    paddingBottom: 8,
+    scrollSnapType: "x proximity",
+  },
+  carouselCard: {
+    borderRadius: 24,
+    padding: "24px 22px",
+    minHeight: 264,
+    boxShadow: "0 18px 36px rgba(27, 22, 18, 0.08)",
+    border: "1px solid rgba(26, 24, 20, 0.04)",
+    scrollSnapAlign: "start",
+  },
+  carouselTag: {
+    display: "inline-flex",
+    borderRadius: 999,
+    padding: "6px 10px",
+    fontSize: 11,
+    fontWeight: 700,
+    letterSpacing: 1,
+    textTransform: "uppercase",
+  },
+  carouselCardTitle: {
+    margin: "18px 0 10px",
+    fontSize: 24,
+    lineHeight: 1.25,
+    fontWeight: 700,
+  },
+  carouselSlogan: {
+    margin: "0 0 18px",
+    fontSize: 14,
+    lineHeight: 1.6,
+    opacity: 0.8,
+  },
+  carouselList: {
+    listStyle: "none",
+    padding: 0,
+    margin: 0,
+    display: "grid",
+    gap: 10,
+  },
+  carouselItem: {
+    position: "relative",
+    paddingLeft: 18,
+    fontSize: 13,
+    fontWeight: 600,
+    lineHeight: 1.5,
+  },
   features: {
     maxWidth: 1140,
-    margin: "-40px auto 60px",
+    margin: "0 auto 60px",
     position: "relative",
     zIndex: 2,
     display: "grid",
@@ -290,7 +456,15 @@ const styles: { [k: string]: React.CSSProperties } = {
   },
   cardTitle: { fontWeight: 700, fontSize: 16, marginBottom: 8 },
   cardText: { fontSize: 13, color: "#8a8580", lineHeight: 1.6, marginBottom: 10 },
-  cardLink: { fontSize: 12, fontWeight: 700, color: ORANGE, cursor: "pointer" },
+  cardLinkButton: {
+    fontSize: 12,
+    fontWeight: 700,
+    color: ORANGE,
+    cursor: "pointer",
+    background: "transparent",
+    border: "none",
+    padding: 0,
+  },
 };
 
 const css = `
@@ -329,6 +503,9 @@ const css = `
       font-size: 26px !important;
       padding: 16px 26px !important;
       max-width: 460px !important;
+    }
+    .xc-carousel-track {
+      grid-template-columns: repeat(3, minmax(240px, 1fr)) !important;
     }
     .xc-features {
       grid-template-columns: repeat(2, 1fr) !important;
