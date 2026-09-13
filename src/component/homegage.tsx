@@ -504,8 +504,12 @@ const css = `
       padding: 16px 26px !important;
       max-width: 460px !important;
     }
+    .xc-carousel-section {
+      padding-left: 12px !important;
+      padding-right: 12px !important;
+    }
     .xc-carousel-track {
-      grid-template-columns: repeat(3, minmax(240px, 1fr)) !important;
+      grid-template-columns: repeat(2, minmax(220px, 1fr)) !important;
     }
     .xc-features {
       grid-template-columns: repeat(2, 1fr) !important;
@@ -567,6 +571,14 @@ const css = `
       padding: 12px 16px !important;
       max-width: 100% !important;
       line-height: 1.3 !important;
+    }
+    .xc-carousel-track {
+      grid-template-columns: 1fr !important;
+      gap: 16px !important;
+    }
+    .xc-carousel-card {
+      min-height: unset !important;
+      padding: 18px 16px !important;
     }
     .xc-features {
       grid-template-columns: 1fr !important;
