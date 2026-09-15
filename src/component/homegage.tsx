@@ -49,7 +49,7 @@ const carouselCards = [
 
 export default function KigFinanceHome() {
   return (
-    <div style={styles.page}>
+    <div id="home" style={styles.page}>
       <style>{css}</style>
 
       {/* Top dark bar */}
@@ -110,13 +110,11 @@ export default function KigFinanceHome() {
 
         <nav className="xc-nav" style={styles.nav}>
           <ul className="xc-nav-list" style={styles.navList}>
-            <li style={styles.navItemActive}>Home</li>
-            <li style={styles.navItem}>About Us</li>
-            <li style={styles.navItem}>
-              Services 
-            </li>
-            <li style={styles.navItem}>Contact Us</li>
-            <li style={styles.navItem}>Our Team</li>
+            <li style={styles.navItemActive}><a href="#home">Home</a></li>
+            <li style={styles.navItem}><a href="#about">About Us</a></li>
+            <li style={styles.navItem}><a href="#services">Services</a></li>
+            <li style={styles.navItem}><a href="#contact">Contact Us</a></li>
+            <li style={styles.navItem}><a href="#team">Our Team</a></li>
           </ul>
          {/*   <div style={styles.socials} aria-label="Social media links">
             <span>Facebook</span>
@@ -186,7 +184,7 @@ export default function KigFinanceHome() {
       </section>
 
       {/* Feature cards */}
-      <section className="xc-features" style={styles.features}>
+      <section id="services" className="xc-features" style={styles.features}>
         <FeatureCard icon={<Home size={26} />} title="Instant Capital Access" text="Savings Barrier Elimination: Position the institution as the fastest alternative to traditional banks by eliminating the mandatory deposit or compulsory savings phase before loan approval." />
         <FeatureCard icon={<Users size={26} />} title="Risk Management & Portfolio Quality" text="Healthy Repayment Culture: Maintain a low Portfolio at Risk (PAR < 5%) by designing flexible, income-aligned repayment schedules (weekly/monthly) that match the cash flow of middle-income borrowers." />
         <FeatureCard icon={<Bell size={26} />} title="Efficient Fund Sourcing" text="Capital Diversification: Secure affordable wholesale credit lines and equity from local banks, International investors and companies to sustain credit lending capacity." />
@@ -468,6 +466,11 @@ const styles: { [k: string]: React.CSSProperties } = {
 };
 
 const css = `
+  .xc-nav-list a {
+    color: inherit;
+    text-decoration: none;
+  }
+
   /* ---------- Tablet (<=900px) ---------- */
   @media (max-width: 900px) {
     .xc-topbar-inner {
@@ -499,6 +502,10 @@ const css = `
       gap: 14px 18px !important;
       font-size: 12px !important;
     }
+      .xc-nav-list a {
+        color: inherit;
+        text-decoration: none;
+      }
     .xc-headline {
       font-size: 26px !important;
       padding: 16px 26px !important;

@@ -302,7 +302,7 @@ export default function CharityLanding() {
     setResult("Sending....");
     const formData = new FormData(form);
 
-    formData.append("access_key", "3ad05130-052d-4d81-8883-0ab770c193f7");
+    formData.append("access_key", "cff85488-6fc6-4bba-8838-cd30f03f464b");
 
     const response = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
@@ -324,7 +324,7 @@ export default function CharityLanding() {
   const funds = 1200;
 
   return (
-    <div className="lc-page">
+    <div id="contact" className="lc-page">
       <style>{styles}</style>
 
       <header className="lc-hero">

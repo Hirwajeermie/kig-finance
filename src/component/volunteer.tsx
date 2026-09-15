@@ -1,49 +1,55 @@
 import { useEffect, useState } from "react";
+import Photo1 from "../assets/photo1.jpeg";
+import Photo2 from "../assets/photo2.jpeg";
+import Photo3 from "../assets/photo3.jpeg";
+import Photo4 from "../assets/photo4.jpeg";
+import Photo5 from "../assets/photo5.jpeg";
 
 interface Volunteer {
   name: string;
   role: string;
   bio: string;
   photo: string;
+  phone: string;
 }
 
 const volunteers: Volunteer[] = [
   {
-    name: "Jason Smith",
-    role: "CIO",
-    bio: "I am an ambitious workaholic, but apart from that, pretty simple person.",
-    photo: "https://i.pravatar.cc/300?img=12",
+    name: "NDAYOBOTSE Silas",
+    role: "Chairman",
+    bio: "Building lasting wealth, one empowered Rwandan family at a time.",
+    photo: Photo3,
+    phone: "+250788348066",
   },
   {
-    name: "Anne Hayes",
-    role: "Manager",
-    bio: "I am an ambitious workaholic, but apart from that, pretty simple person.",
-    photo: "https://i.pravatar.cc/300?img=47",
+    name: "NIYONAMBAJE Pelagie",
+    role: " Managing Director",
+    bio: "Turning bold vision into fast, responsible financial access for all.",
+    photo: Photo5,
+    phone: "+250785126032",
   },
   {
-    name: "Martha Smith",
+    name: "MUSHIMIYIMANA Juliette",
     role: "Accountant",
-    bio: "I am an ambitious workaholic, but apart from that, pretty simple person.",
-    photo: "https://i.pravatar.cc/300?img=44",
+    bio: "Sound numbers today secure sustainable wealth and growth tomorrow.",
+    photo: Photo4,
+    phone: "+250708136022",
   },
   {
-    name: "Mike Tyson",
-    role: "IT",
-    bio: "I am an ambitious workaholic, but apart from that, pretty simple person.",
-    photo: "https://i.pravatar.cc/300?img=14",
+    name: "MUNYAWERA Tharcisse",
+    role: "Loan officer",
+    bio: "Fast, fair loans — no savings barrier, just real opportunity.",
+    photo: Photo2,
+    phone: "+250785134582",
   },
   {
-    name: "Sara Lopez",
-    role: "Stock Manager",
-    bio: "I am an ambitious workaholic, but apart from that, pretty simple person.",
-    photo: "https://i.pravatar.cc/300?img=32",
+    name: "ICYIMPAYE Marie Chantal ",
+    role: "Marketing & Sales ",
+    bio: "Wealth by Investing and Saving — your capital, instantly accessible.",
+    photo: Photo1,
+    phone: "+250789462212",
   },
-  {
-    name: "David Kim",
-    role: "Marketing",
-    bio: "I am an ambitious workaholic, but apart from that, pretty simple person.",
-    photo: "https://i.pravatar.cc/300?img=51",
-  },
+ 
 ];
 
 const socials = [
@@ -53,6 +59,12 @@ const socials = [
 
 function SocialIcon({ type }: { type: string }) {
   switch (type) {
+    case "w":
+      return (
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M20.5 3.5A11.8 11.8 0 0 0 12.1 0C5.6 0 .3 5.3.3 11.8c0 2.1.6 4.1 1.6 5.8L.2 23.8l6.3-1.6a11.8 11.8 0 0 0 5.6 1.4h.1c6.5 0 11.8-5.3 11.8-11.8 0-3.1-1.2-6.1-3.5-8.3Zm-8.3 18.1h-.1c-1.8 0-3.6-.5-5.1-1.4l-.4-.2-3.7 1 1-3.6-.2-.4a9.8 9.8 0 0 1-1.5-5.2c0-5.4 4.5-9.8 9.9-9.8 2.6 0 5.1 1 7 2.9a9.8 9.8 0 0 1 2.9 7c0 5.3-4.4 9.7-9.8 9.7Zm5.4-7.3c-.3-.2-1.8-.9-2.1-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-1.6-.8-2.6-1.5-3.6-3.3-.3-.5.3-.5.8-1.6.1-.2.1-.4 0-.6-.1-.2-.7-1.7-.9-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.1 1.1-1.1 2.7s1.1 3.1 1.3 3.3c.2.2 2.1 3.2 5.1 4.5 1.9.8 2.7.9 3.7.8.6-.1 1.8-.7 2-1.4.3-.7.3-1.3.2-1.4-.2-.2-.4-.3-.7-.4Z" />
+        </svg>
+      );
     case "t":
       return (
         <svg viewBox="0 0 24 24" fill="currentColor">
@@ -311,11 +323,11 @@ export default function OurVolunteer() {
   const offset = page * slidesPerView * slideWidth;
 
   return (
-    <section className="ov-section">
+    <section id="team" className="ov-section">
       <style>{styles}</style>
 
       <p className="ov-eyebrow">Meet Our Team</p>
-      <h2 className="ov-title">Our V</h2>
+      <h2 className="ov-title">KIG Finance Team</h2>
 
       <div className="ov-slider">
         <button
@@ -348,9 +360,22 @@ export default function OurVolunteer() {
                   <p className="ov-role">{v.role}</p>
                   <div className="ov-socials">
                     {socials.map((s) => (
-                      <span className="ov-social" key={s.name}>
-                        <SocialIcon type={s.icon} />
-                      </span>
+                      s.icon === "w" ? (
+                        <a
+                          className="ov-social"
+                          href={`https://wa.me/${v.phone.replace(/\D/g, "")}`}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label="Contact KIG Finance on WhatsApp"
+                          key={s.name}
+                        >
+                          <SocialIcon type={s.icon} />
+                        </a>
+                      ) : (
+                        <span className="ov-social" key={s.name}>
+                          <SocialIcon type={s.icon} />
+                        </span>
+                      )
                     ))}
                   </div>
                   <p className="ov-bio">{v.bio}</p>

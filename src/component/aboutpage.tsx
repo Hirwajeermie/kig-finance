@@ -6,7 +6,7 @@ import Group from "../assets/Group_.png";
 export default function AboutSection() {
   const navigate = useNavigate();
   return (
-    <section style={styles.section}>
+    <section id="about" style={styles.section}>
       <div style={styles.container}>
         <div style={styles.textCol}>
           <span style={styles.eyebrow}>OUR VISION</span>

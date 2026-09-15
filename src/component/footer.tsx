@@ -1,4 +1,6 @@
 import logoo from "../assets/logoo.png"; 
+import finance from "../assets/finance.jpg";
+import money from "../assets/money.webp";
 
 interface Post {
   image: string;
@@ -9,16 +11,16 @@ interface Post {
 
 const posts: Post[] = [
   {
-    image: "https://picsum.photos/seed/lovecare1/120/120",
-    date: "Feb. 22, 2021",
-    author: "Admin",
-    title: "Ecological System Responsible for Green Energy",
+    image: finance,
+    date: "Sep. 13, 2026",
+    author: "KIG Finance",
+    title: "Building financial confidence through accessible credit",
   },
   {
-    image: "https://picsum.photos/seed/lovecare2/120/120",
-    date: "Feb. 22, 2021",
-    author: "Admin",
-    title: "Ecological System Responsible for Green Energy",
+    image: money,
+    date: "Sep. 10, 2026",
+    author: "KIG Finance",
+    title: "Smart funding that helps local businesses grow",
   },
 ];
 
