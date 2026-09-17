@@ -235,6 +235,7 @@ const styles: { [k: string]: React.CSSProperties } = {
     margin: "0 auto",
     display: "flex",
     justifyContent: "space-between",
+    
     alignItems: "center",
     padding: "8px 20px",
   },
@@ -245,7 +246,7 @@ const styles: { [k: string]: React.CSSProperties } = {
 
   headerWrap: {
     maxWidth: 1000,
-    
+
     margin: "-28px auto 0",
     position: "relative",
     zIndex: 3,
