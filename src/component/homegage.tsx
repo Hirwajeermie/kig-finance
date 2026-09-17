@@ -245,6 +245,7 @@ const styles: { [k: string]: React.CSSProperties } = {
 
   headerWrap: {
     maxWidth: 1000,
+    
     margin: "-28px auto 0",
     position: "relative",
     zIndex: 3,
