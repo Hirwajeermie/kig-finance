@@ -149,7 +149,7 @@ const AboutCompany: React.FC = () => {
         <div className="about-company__content">
           <h2 className="about-company__heading">About KIG Finance</h2>
           <p className="about-company__text">
-           KIG Finance is a Rwandan financial services company whose motto, "Wealth by Investing and Saving," captures its goal of helping ordinary Rwandans build financial security through accessible credit. Its vision is to become Rwanda's leading retail financial services provider, focused on the masses and middle-income earners. Its mission is to drive economic empowerment by offering fast, responsible credit without requiring prior savings — a barrier traditional banks often impose — helping clients access capital, grow income, and achieve financial independence.
+           KIG Finance is a Rwandan financial services company whose motto, "Wealth by Investing and Saving," captures its goal of helping ordinary Rwandans build financial security through accessible credit. Its vision is to become Rwanda's leading retail financial services provider, focused on the masses and middle-income earners. Its mission is to drive economic empowerment by offering fast, responsible credit without requiring prior savings a barrier traditional banks often impose helping clients access capital, grow income, and achieve financial independence.
 
 The company offers two main products: a Business Loan, requiring ID, RDB registration, six months of bank/MoMo statements, marital status certificate, and collateral; and a Salary Loan, requiring similar documents plus a work contract (minimum six months), three months of bank statements, and three pay-slips.
 

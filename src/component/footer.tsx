@@ -240,7 +240,7 @@ export default function Footer() {
           </div> 
   
           <p className="lf-desc">
-            "KIG Finance — Wealth by Investing and Saving. We eliminate savings 
+            "KIG Finance Wealth by Investing and Saving. We eliminate savings 
             barriers and deliver instant, collateral-friendly loans via mobile 
             money to Rwanda's unbanked and middle-income earners, driving fast, 
             responsible credit access that fuels income growth and lasting financial independence."
