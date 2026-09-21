@@ -1,7 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Phone, MapPin, Home, Users, Bell, Briefcase } from "lucide-react";
+import { Phone, MapPin, Mail, Home, Users, Bell, Briefcase } from "lucide-react";
 import logo from "../assets/logoo.png";
+import arena from "../assets/arena.jpeg";
+import house from "../assets/house.jpeg";
+import more from "../assets/more.jpeg";
+
+const heroSlides = [
+  {
+    image: arena,
+    tag: "Arena",
+    title: "Kig Finance at BK Arena",
+    subtitle: "Grow with a trusted financial partner in the heart of Kigali.",
+  },
+  {
+    image: house,
+    tag: "House",
+    title: "A place built around opportunity",
+    subtitle: "Flexible financing for homes, businesses, and everyday growth.",
+  },
+  {
+    image: more,
+    tag: "More",
+    title: "Smarter financial solutions",
+    subtitle: "Access support designed to move your plans forward.",
+  },
+];
 
 const carouselCards = [
   {
@@ -48,6 +72,18 @@ const carouselCards = [
 ];
 
 export default function KigFinanceHome() {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % heroSlides.length);
+    }, 4000);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
+  const currentSlide = heroSlides[activeSlide];
+
   return (
     <div id="home" style={styles.page}>
       <style>{css}</style>
@@ -105,6 +141,16 @@ export default function KigFinanceHome() {
                 <div style={styles.contactValue}>KG 17 Ave-Kigali, Remera,<br></br> Opposite BK Arena</div>
               </div>
             </div>
+            <span className="xc-divider" style={styles.divider} />
+            <div style={styles.contactItem}>
+              <span style={styles.iconCircle}>
+                <Mail size={16} color="#00c22d" />
+              </span>
+              <div>
+                <div style={styles.contactLabel}>Email:</div>
+                <a href="mailto:info@kigfinance.rw" style={styles.contactValueLink}>info@kigfinance.rw</a>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -115,6 +161,7 @@ export default function KigFinanceHome() {
             <li style={styles.navItem}><a href="#services">Services</a></li>
             <li style={styles.navItem}><a href="#contact">Contact Us</a></li>
             <li style={styles.navItem}><a href="#team">Our Team</a></li>
+            <li style={styles.navItem}><a href="mailto:info@kigfinance.rw">Email</a></li>
           </ul>
          {/*   <div style={styles.socials} aria-label="Social media links">
             <span>Facebook</span>
@@ -127,17 +174,34 @@ export default function KigFinanceHome() {
       {/* Hero */}
       <section className="xc-hero" style={styles.hero}>
         <img
-          src="https://images.unsplash.com/photo-1447069387593-a5de0862481e?w=1400&q=80"
-          alt="Kig Finance hero"
+          src={currentSlide.image}
+          alt={currentSlide.title}
           className="xc-hero-image"
           style={styles.heroImage}
         />
+
+        <div style={styles.heroOverlay} />
+
         <div className="xc-hero-text" style={styles.heroTextWrap}>
-          <div className="xc-eyebrow" style={styles.eyebrow}>Finance</div>
-          <div className="xc-headline" style={styles.headline}>Wealth by Investing and Saving</div>
-          <div style={styles.heroSubtitle}>Build stability with smart, inclusive financial tools.</div>
+          <div className="xc-eyebrow" style={styles.eyebrow}>{currentSlide.tag}</div>
+          <div className="xc-headline" style={styles.headline}>{currentSlide.title}</div>
+          <div style={styles.heroSubtitle}>{currentSlide.subtitle}</div>
         </div>
-        <div style={styles.heroCurve} />
+
+        <div style={styles.heroDots} aria-label="Hero slide navigation">
+          {heroSlides.map((slide, index) => (
+            <button
+              key={slide.title}
+              type="button"
+              onClick={() => setActiveSlide(index)}
+              aria-label={`Show slide ${index + 1}`}
+              style={{
+                ...styles.heroDot,
+                ...(index === activeSlide ? styles.heroDotActive : {}),
+              }}
+            />
+          ))}
+        </div>
       </section>
       </div>
 
@@ -285,6 +349,12 @@ const styles: { [k: string]: React.CSSProperties } = {
   },
   contactLabel: { fontSize: 11, color: "#999" },
   contactValue: { fontSize: 14, fontWeight: 700 },
+  contactValueLink: {
+    fontSize: 14,
+    fontWeight: 700,
+    color: "#1d1d1d",
+    textDecoration: "none",
+  },
   divider: { width: 1, height: 34, background: "#e5e0da" },
 
   nav: {
@@ -307,52 +377,88 @@ const styles: { [k: string]: React.CSSProperties } = {
   navItemActive: { color: ORANGE, cursor: "pointer" },
   socials: { display: "flex", gap: 12, color: "#333" },
 
-  hero: { position: "relative", overflow: "hidden", height: 520 },
-  heroImage: { width: "100%", height: "100%", objectFit: "cover", filter: "grayscale(15%)" },
+  hero: {
+    position: "relative",
+    overflow: "hidden",
+    height: 520,
+    maxWidth: 1200,
+    margin: "0 auto",
+    borderRadius: 24,
+    boxShadow: "0 16px 36px rgba(0,0,0,0.1)",
+  },
+  heroImage: {
+    width: "100%",
+    height: "100%",
+    objectFit: "cover",
+    filter: "grayscale(10%)",
+    display: "block",
+  },
+  heroOverlay: {
+    position: "absolute",
+    inset: 0,
+    background: "linear-gradient(90deg, rgba(15,20,19,0.76) 0%, rgba(15,20,19,0.3) 42%, rgba(15,20,19,0.18) 100%)",
+  },
   heroTextWrap: {
     position: "absolute",
-    left: "50%",
-    top: "62%",
-    transform: "translate(-50%, -50%)",
-    textAlign: "center",
+    left: "7%",
+    top: "50%",
+    transform: "translateY(-50%)",
+    textAlign: "left",
+    zIndex: 1,
+    maxWidth: 560,
   },
   eyebrow: {
     display: "inline-block",
-    background: "rgba(46,42,38,0.85)",
+    background: "rgba(0,194,45,0.9)",
     color: "#fff",
     fontSize: 12,
     letterSpacing: 3,
-    fontWeight: 600,
-    padding: "10px 22px",
+    fontWeight: 700,
+    padding: "10px 18px",
+    borderRadius: 999,
+    textTransform: "uppercase",
   },
   headline: {
-    background: "#00c22d",
-    color: DARK,
+    background: "rgba(8,12,10,0.22)",
+    color: "#fff",
     fontSize: 34,
     fontWeight: 700,
-    padding: "20px 40px",
-    marginTop: -1,
+    padding: "18px 22px",
+    marginTop: 12,
     maxWidth: 620,
     lineHeight: 1.25,
-  },
-  heroCurve: {
-    position: "absolute",
-    bottom: -1,
-    left: 0,
-    right: 0,
-    height: 60,
-    background: "#fff",
-    borderRadius: "50% 50% 0 0 / 100% 100% 0 0",
-    transform: "scaleX(1.6)",
+    borderRadius: 18,
+    backdropFilter: "blur(2px)",
   },
   heroSubtitle: {
-    marginTop: 10,
+    marginTop: 12,
     color: "#fff",
     fontSize: 16,
     textShadow: "0 2px 12px rgba(0,0,0,0.25)",
-    maxWidth: 560,
-    marginLeft: "auto",
-    marginRight: "auto",
+    maxWidth: 520,
+  },
+  heroDots: {
+    position: "absolute",
+    bottom: 18,
+    left: "50%",
+    transform: "translateX(-50%)",
+    display: "flex",
+    alignItems: "center",
+    gap: 10,
+    zIndex: 2,
+  },
+  heroDot: {
+    width: 11,
+    height: 11,
+    borderRadius: "50%",
+    border: "none",
+    background: "rgba(255,255,255,0.45)",
+    cursor: "pointer",
+    padding: 0,
+  },
+  heroDotActive: {
+    background: "#00c22d",
+    boxShadow: "0 0 0 3px rgba(0,194,45,0.25)",
   },
   carouselSection: {
     maxWidth: 1200,

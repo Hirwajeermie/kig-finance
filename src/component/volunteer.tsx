@@ -26,28 +26,28 @@ const volunteers: Volunteer[] = [
     role: " Managing Director",
     bio: "Turning bold vision into fast, responsible financial access for all.",
     photo: Photo5,
-    phone: "+250785126032",
+    phone: "+250788348066",
   },
   {
     name: "MUSHIMIYIMANA Juliette",
     role: "Accountant",
     bio: "Sound numbers today secure sustainable wealth and growth tomorrow.",
     photo: Photo4,
-    phone: "+250708136022",
+    phone: "+250788348066",
   },
   {
     name: "MUNYAWERA Tharcisse",
     role: "Loan officer",
     bio: "Fast, fair loans — no savings barrier, just real opportunity.",
     photo: Photo2,
-    phone: "+250785134582",
+    phone: "+250788348066",
   },
   {
     name: "ICYIMPAYE Marie Chantal ",
     role: "Marketing & Sales ",
     bio: "Wealth by Investing and Saving — your capital, instantly accessible.",
     photo: Photo1,
-    phone: "+250789462212",
+    phone: "+250788348066",
   },
  
 ];
