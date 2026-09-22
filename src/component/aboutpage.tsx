@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 import { useNavigate } from "react-router-dom";
 import Money from "../assets/money.webp";
-import Group from "../assets/Group_.png";
+import Group from "../assets/Group.jpeg";
 
 export default function AboutSection() {
   const navigate = useNavigate();
