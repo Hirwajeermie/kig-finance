@@ -29,6 +29,7 @@ const volunteers: Volunteer[] = [
     photo: Photo5,
     phone: "+250788348066",
   },
+
   {
     name: "MUSHIMIYIMANA Juliette",
     role: "Accountant",
@@ -108,6 +109,7 @@ function useSlidesPerView() {
     return 4;
   };
 
+  
   const [value, setValue] = useState(getValue);
 
   useEffect(() => {
