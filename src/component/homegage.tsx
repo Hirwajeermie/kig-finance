@@ -163,6 +163,7 @@ export default function KigFinanceHome() {
             <li style={styles.navItem}><a href="#team">Our Team</a></li>
             <li style={styles.navItem}><a href="mailto:info@kigfinance.rw">Web Email</a></li>
             
+            
           </ul>
          {/*   <div style={styles.socials} aria-label="Social media links">
             <span>Facebook</span>
