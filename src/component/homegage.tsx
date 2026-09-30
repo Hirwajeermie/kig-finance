@@ -50,7 +50,7 @@ const carouselCards = [
     background: "linear-gradient(135deg, #eef3ff 0%, #dfe7ff 35%, #ffffff 100%)",
     text: "#1d2233",
     services: ["oLoan application form", 
-      "o Valid National ID/Passport (Copy) of Business owners", 
+      ". Valid National ID/Passport (Copy) of Business owners", 
       "o Professional Work Contract (minimum of 6months)", 
       "o Bank Statement (Last 3 Months)",
       "o Three (3) recent pay-slips stamped",
@@ -240,7 +240,7 @@ export default function KigFinanceHome() {
               <ul style={styles.carouselList}>
                 {card.services.map((service) => (
                   <li key={service} style={styles.carouselItem}>
-                    {service}
+                    {service.replace(/^[o.]\s*/i, "")}
                   </li>
                 ))}
               </ul>
@@ -526,15 +526,13 @@ const styles: { [k: string]: React.CSSProperties } = {
     opacity: 0.8,
   },
   carouselList: {
-    listStyle: "none",
-    padding: 0,
+    listStyle: "disc",
+    padding: "0 0 0 18px",
     margin: 0,
     display: "grid",
     gap: 10,
   },
   carouselItem: {
-    position: "relative",
-    paddingLeft: 18,
     fontSize: 13,
     fontWeight: 600,
     lineHeight: 1.5,
